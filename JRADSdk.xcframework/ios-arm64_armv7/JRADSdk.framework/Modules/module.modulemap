@@ -1,0 +1,11 @@
+framework module JRADSdk {
+  umbrella header "JRADSdk.h"
+
+  export *
+  module * { export * }
+}
+
+module JRADSdk.Swift {
+    header "JRADSdk-Swift.h"
+    requires objc
+}

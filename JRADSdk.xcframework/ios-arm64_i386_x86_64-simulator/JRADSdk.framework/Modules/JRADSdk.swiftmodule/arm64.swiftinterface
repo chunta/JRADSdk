@@ -1,0 +1,938 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
+// swift-module-flags: -target arm64-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name JRADSdk
+import CommonCrypto
+import CoreFoundation
+import CoreGraphics
+import Dispatch
+import Foundation
+@_exported import JRADSdk
+import Security
+import Swift
+import UIKit
+import WebKit
+import os
+import zlib
+public struct SocketIOClientConfiguration : Swift.ExpressibleByArrayLiteral, Swift.Collection, Swift.MutableCollection {
+  public typealias Element = JRADSdk.SocketIOClientOption
+  public typealias Index = Swift.Array<JRADSdk.SocketIOClientOption>.Index
+  public typealias Iterator = Swift.Array<JRADSdk.SocketIOClientOption>.Iterator
+  public typealias SubSequence = Swift.Array<JRADSdk.SocketIOClientOption>.SubSequence
+  public var startIndex: JRADSdk.SocketIOClientConfiguration.Index {
+    get
+  }
+  public var endIndex: JRADSdk.SocketIOClientConfiguration.Index {
+    get
+  }
+  public var isEmpty: Swift.Bool {
+    get
+  }
+  public var count: JRADSdk.SocketIOClientConfiguration.Index.Stride {
+    get
+  }
+  public var first: JRADSdk.SocketIOClientConfiguration.Element? {
+    get
+  }
+  public subscript(position: JRADSdk.SocketIOClientConfiguration.Index) -> JRADSdk.SocketIOClientConfiguration.Element {
+    get
+    set
+  }
+  public subscript(bounds: Swift.Range<JRADSdk.SocketIOClientConfiguration.Index>) -> JRADSdk.SocketIOClientConfiguration.SubSequence {
+    get
+    set
+  }
+  public init(arrayLiteral elements: JRADSdk.SocketIOClientConfiguration.Element...)
+  public func makeIterator() -> JRADSdk.SocketIOClientConfiguration.Iterator
+  public func index(after i: JRADSdk.SocketIOClientConfiguration.Index) -> JRADSdk.SocketIOClientConfiguration.Index
+  public mutating func insert(_ element: JRADSdk.SocketIOClientConfiguration.Element, replacing replace: Swift.Bool = true)
+  public typealias ArrayLiteralElement = JRADSdk.SocketIOClientConfiguration.Element
+  public typealias Indices = Swift.DefaultIndices<JRADSdk.SocketIOClientConfiguration>
+}
+public protocol ConfigSettable {
+  mutating func setConfigs(_ config: JRADSdk.SocketIOClientConfiguration)
+}
+@_inheritsConvenienceInitializers @objc(AIDAiDeal) @objcMembers final public class AiDeal : ObjectiveC.NSObject {
+  @objc final public var presenterView: JRADSdk.CampaignPresenterView? {
+    @objc get
+  }
+  @objc final public func configure(apiKey: Swift.String)
+  @objc(startLoggingWithViewController:) final public func startLogging(_ viewController: UIKit.UIViewController)
+  @objc(startLoggingWithViewController:scrollView:attributes:) final public func startLogging(_ viewController: UIKit.UIViewController, scrollView: UIKit.UIScrollView?, attributes: [JRADSdk.Page.AttributeName : Any])
+  @objc(startLoggingWithViewController:attributes:) final public func startLogging(_ viewController: UIKit.UIViewController, attributes: [JRADSdk.Page.AttributeName : Any])
+  @objc(startLoggingWithViewController:scrollView:) final public func startLogging(_ viewController: UIKit.UIViewController, scrollView: UIKit.UIScrollView?)
+  @objc final public func stopLogging()
+  @objc(logConversion:) final public func log(_ conversion: JRADSdk.Conversion)
+  @objc(setDataCollection:) final public func setDataCollection(_ enabled: Swift.Bool)
+  @objc public static let shared: JRADSdk.AiDeal
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_hasMissingDesignatedInitializers public class CampaignPresenterView : ObjectiveC.NSObject {
+  weak public var presenterViewController: UIKit.UIViewController?
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension CampaignPresenterView {
+  public func presentOffer(contentHTML: Swift.String, css: Swift.String)
+  public func dismissOffer()
+  public func presentCoupon(contentHTML: Swift.String, css: Swift.String, couponCode: Swift.String, requestCopyBlock: (() -> Swift.Void)? = nil)
+  public func showBadge(text: Swift.String?, backgroundColor: UIKit.UIColor, imageURL: Foundation.URL)
+  public func setBadgeText(_ text: Swift.String?)
+  public func hideBadge()
+  public func showToast(message: Swift.String)
+}
+extension CampaignPresenterView : UIKit.UIViewControllerTransitioningDelegate {
+  @objc dynamic public func presentationController(forPresented presented: UIKit.UIViewController, presenting: UIKit.UIViewController?, source: UIKit.UIViewController) -> UIKit.UIPresentationController?
+  @objc dynamic public func animationController(forPresented presented: UIKit.UIViewController, presenting: UIKit.UIViewController, source: UIKit.UIViewController) -> UIKit.UIViewControllerAnimatedTransitioning?
+  @objc dynamic public func animationController(forDismissed dismissed: UIKit.UIViewController) -> UIKit.UIViewControllerAnimatedTransitioning?
+}
+extension PageType : Swift.Codable {
+}
+@objc open class SocketManager : ObjectiveC.NSObject, JRADSdk.SocketManagerSpec, JRADSdk.SocketParsable, JRADSdk.SocketDataBufferable, JRADSdk.ConfigSettable {
+  @objc public var defaultSocket: JRADSdk.SocketIOClient {
+    @objc get
+  }
+  @objc final public let socketURL: Foundation.URL
+  public var config: JRADSdk.SocketIOClientConfiguration {
+    get
+    set
+  }
+  @objc public var engine: JRADSdk.SocketEngineSpec?
+  @objc public var forceNew: Swift.Bool
+  @objc public var handleQueue: Dispatch.DispatchQueue
+  @objc public var nsps: [Swift.String : JRADSdk.SocketIOClient]
+  @objc public var reconnects: Swift.Bool
+  @objc public var reconnectWait: Swift.Int
+  @objc public var reconnectWaitMax: Swift.Int
+  @objc public var randomizationFactor: Swift.Double
+  @objc public var status: JRADSdk.SocketIOStatus {
+    @objc get
+  }
+  public var waitingPackets: [JRADSdk.SocketPacket]
+  public init(socketURL: Foundation.URL, config: JRADSdk.SocketIOClientConfiguration = [])
+  @objc convenience public init(socketURL: Foundation.URL, config: [Swift.String : Any]?)
+  @objc deinit
+  @objc open func connect()
+  @objc open func connectSocket(_ socket: JRADSdk.SocketIOClient)
+  @objc open func didDisconnect(reason: Swift.String)
+  @objc open func disconnect()
+  @objc open func disconnectSocket(_ socket: JRADSdk.SocketIOClient)
+  @objc open func disconnectSocket(forNamespace nsp: Swift.String)
+  open func emitAll(clientEvent event: JRADSdk.SocketClientEvent, data: [Any])
+  open func emitAll(_ event: Swift.String, _ items: JRADSdk.SocketData...)
+  @objc open func emitAll(_ event: Swift.String, withItems items: [Any])
+  @objc open func engineDidClose(reason: Swift.String)
+  @objc open func engineDidError(reason: Swift.String)
+  @objc open func engineDidOpen(reason: Swift.String)
+  @objc open func engineDidReceivePong()
+  @objc open func engineDidSendPing()
+  @objc open func engineDidWebsocketUpgrade(headers: [Swift.String : Swift.String])
+  @objc open func parseEngineMessage(_ msg: Swift.String)
+  @objc open func parseEngineBinaryData(_ data: Foundation.Data)
+  @objc open func reconnect()
+  @discardableResult
+  @objc open func removeSocket(_ socket: JRADSdk.SocketIOClient) -> JRADSdk.SocketIOClient?
+  open func setConfigs(_ config: JRADSdk.SocketIOClientConfiguration)
+  @objc open func socket(forNamespace nsp: Swift.String) -> JRADSdk.SocketIOClient
+  @objc override dynamic public init()
+}
+public protocol SocketLogger : AnyObject {
+  var log: Swift.Bool { get set }
+  func log(_ message: @autoclosure () -> Swift.String, type: Swift.String)
+  func error(_ message: @autoclosure () -> Swift.String, type: Swift.String)
+}
+extension SocketLogger {
+  public func log(_ message: @autoclosure () -> Swift.String, type: Swift.String)
+  public func error(_ message: @autoclosure () -> Swift.String, type: Swift.String)
+}
+@objc @_hasMissingDesignatedInitializers final public class SocketRawView : ObjectiveC.NSObject {
+  final public func emit(_ event: Swift.String, _ items: JRADSdk.SocketData...)
+  @objc final public func emit(_ event: Swift.String, with items: [Any])
+  final public func emitWithAck(_ event: Swift.String, _ items: JRADSdk.SocketData...) -> JRADSdk.OnAckCallback
+  @objc final public func emitWithAck(_ event: Swift.String, with items: [Any]) -> JRADSdk.OnAckCallback
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_hasMissingDesignatedInitializers final public class SocketRawAckView : ObjectiveC.NSObject {
+  final public func with(_ items: JRADSdk.SocketData...)
+  @objc final public func with(_ items: [Any])
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public protocol SocketEngineClient {
+  @objc func engineDidError(reason: Swift.String)
+  @objc func engineDidClose(reason: Swift.String)
+  @objc func engineDidOpen(reason: Swift.String)
+  @objc func engineDidReceivePong()
+  @objc func engineDidSendPing()
+  @objc func parseEngineMessage(_ msg: Swift.String)
+  @objc func parseEngineBinaryData(_ data: Foundation.Data)
+  @objc func engineDidWebsocketUpgrade(headers: [Swift.String : Swift.String])
+}
+@objc @_hasMissingDesignatedInitializers open class SocketIOSSLSecurity : ObjectiveC.NSObject {
+  final public let security: JRADSdk.StarscreamSSLSecurity
+  @objc convenience public init(usePublicKeys: Swift.Bool = true)
+  convenience public init(certs: [JRADSdk.SSLCert], usePublicKeys: Swift.Bool)
+  public func isValid(_ trust: Security.SecTrust, domain: Swift.String?) -> Swift.Bool
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(AIDConversionItem) @objcMembers public class ConversionItem : ObjectiveC.NSObject {
+  @objc final public let identifier: Swift.String
+  @objc public var name: Swift.String?
+  @objc public var url: Foundation.URL?
+  @objc public var price: Swift.Double
+  @objc public var quantity: Swift.Int
+  @objc @available(*, deprecated, renamed: "quantity")
+  public var count: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public init(identifier: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension ConversionItem : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@available(*, deprecated, renamed: "ConversionItem")
+public typealias AIDConversionItem = JRADSdk.ConversionItem
+@objc final public class SocketAckEmitter : ObjectiveC.NSObject {
+  @objc final public var rawEmitView: JRADSdk.SocketRawAckView {
+    @objc get
+  }
+  final public var expected: Swift.Bool {
+    get
+  }
+  public init(socket: JRADSdk.SocketIOClient, ackNum: Swift.Int)
+  final public func with(_ items: JRADSdk.SocketData...)
+  @objc final public func with(_ items: [Any])
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_hasMissingDesignatedInitializers final public class OnAckCallback : ObjectiveC.NSObject {
+  @objc deinit
+  @objc final public func timingOut(after seconds: Swift.Double, callback: @escaping JRADSdk.AckCallback)
+  @objc override dynamic public init()
+}
+@_inheritsConvenienceInitializers @available(*, deprecated)
+@objc @objcMembers final public class AIDManager : ObjectiveC.NSObject {
+  @objc @available(*, deprecated, renamed: "configure(apiKey:)")
+  final public func initWithApiKey(_ key: Swift.String)
+  @objc @available(*, deprecated, renamed: "startLogging")
+  final public func initPage(_ vctl: UIKit.UIViewController, PageType: Swift.String, Scrollable: UIKit.UIScrollView?, IsLogin: Swift.Bool, ItemPrice: Foundation.NSNumber?, CartPrice: Foundation.NSNumber?)
+  @objc @available(*, deprecated, renamed: "startLogging")
+  final public func initPage(_ vctl: UIKit.UIViewController, pageType: Swift.String, scrollable: UIKit.UIScrollView?, isLogin: Swift.Bool, itemPrice: Foundation.NSNumber?, cartPrice: Foundation.NSNumber?)
+  @objc @available(*, deprecated)
+  final public func deinitPage()
+  @objc @available(*, deprecated)
+  final public func sendConversionInfo(_ conversionInfo: JRADSdk.Conversion)
+  @objc @available(*, deprecated, renamed: "shared")
+  public static func instance() -> JRADSdk.AIDManager
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public enum SocketIOStatus : Swift.Int, Swift.CustomStringConvertible {
+  case notConnected
+  case disconnected
+  case connecting
+  case connected
+  public var active: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc open class SocketEngine : ObjectiveC.NSObject, Foundation.URLSessionDelegate, JRADSdk.SocketEnginePollable, JRADSdk.SocketEngineWebsocket, JRADSdk.ConfigSettable {
+  @objc final public let engineQueue: Dispatch.DispatchQueue
+  @objc public var connectParams: [Swift.String : Any]? {
+    @objc get
+    @objc set
+  }
+  @objc public var extraHeaders: [Swift.String : Swift.String]?
+  public var postWait: [JRADSdk.Post]
+  public var waitingForPoll: Swift.Bool
+  public var waitingForPost: Swift.Bool
+  @objc public var closed: Swift.Bool {
+    get
+  }
+  @objc public var compress: Swift.Bool {
+    get
+  }
+  @objc public var connected: Swift.Bool {
+    get
+  }
+  @objc public var cookies: [Foundation.HTTPCookie]? {
+    get
+  }
+  @objc public var fastUpgrade: Swift.Bool {
+    get
+  }
+  @objc public var forcePolling: Swift.Bool {
+    get
+  }
+  @objc public var forceWebsockets: Swift.Bool {
+    get
+  }
+  public var invalidated: Swift.Bool {
+    get
+  }
+  @objc public var polling: Swift.Bool {
+    get
+  }
+  @objc public var probing: Swift.Bool {
+    get
+  }
+  public var session: Foundation.URLSession? {
+    get
+  }
+  @objc public var sid: Swift.String {
+    get
+  }
+  @objc public var socketPath: Swift.String {
+    get
+  }
+  @objc public var urlPolling: Foundation.URL {
+    get
+  }
+  @objc public var urlWebSocket: Foundation.URL {
+    get
+  }
+  @available(*, deprecated, message: "No longer needed, if we're not polling, then we must be doing websockets")
+  @objc public var websocket: Swift.Bool {
+    get
+  }
+  public var enableSOCKSProxy: Swift.Bool {
+    get
+  }
+  @objc public var ws: JRADSdk.WebSocket? {
+    get
+  }
+  @objc weak public var client: JRADSdk.SocketEngineClient?
+  public init(client: JRADSdk.SocketEngineClient, url: Foundation.URL, config: JRADSdk.SocketIOClientConfiguration)
+  @objc required convenience public init(client: JRADSdk.SocketEngineClient, url: Foundation.URL, options: [Swift.String : Any]?)
+  @objc deinit
+  @objc open func connect()
+  @objc open func didError(reason: Swift.String)
+  @objc open func disconnect(reason: Swift.String)
+  @objc open func doFastUpgrade()
+  @objc open func flushWaitingForPostToWebSocket()
+  @objc open func parseEngineData(_ data: Foundation.Data)
+  @objc open func parseEngineMessage(_ message: Swift.String)
+  open func setConfigs(_ config: JRADSdk.SocketIOClientConfiguration)
+  @objc open func write(_ msg: Swift.String, withType type: JRADSdk.SocketEnginePacketType, withData data: [Foundation.Data], completion: (() -> ())? = nil)
+  @objc override dynamic public init()
+}
+extension SocketEngine {
+  public func URLSession(session: Foundation.URLSession, didBecomeInvalidWithError error: Foundation.NSError?)
+}
+@objc public protocol SocketManagerSpec : AnyObject, JRADSdk.SocketEngineClient {
+  @objc var defaultSocket: JRADSdk.SocketIOClient { get }
+  @objc var engine: JRADSdk.SocketEngineSpec? { get set }
+  @objc var forceNew: Swift.Bool { get set }
+  @objc var handleQueue: Dispatch.DispatchQueue { get set }
+  @objc var nsps: [Swift.String : JRADSdk.SocketIOClient] { get set }
+  @objc var reconnects: Swift.Bool { get set }
+  @objc var reconnectWait: Swift.Int { get set }
+  @objc var reconnectWaitMax: Swift.Int { get set }
+  @objc var randomizationFactor: Swift.Double { get set }
+  @objc var socketURL: Foundation.URL { get }
+  @objc var status: JRADSdk.SocketIOStatus { get }
+  @objc func connect()
+  @objc func connectSocket(_ socket: JRADSdk.SocketIOClient)
+  @objc func didDisconnect(reason: Swift.String)
+  @objc func disconnect()
+  @objc func disconnectSocket(_ socket: JRADSdk.SocketIOClient)
+  @objc func disconnectSocket(forNamespace nsp: Swift.String)
+  @objc func emitAll(_ event: Swift.String, withItems items: [Any])
+  @objc func reconnect()
+  @objc @discardableResult
+  func removeSocket(_ socket: JRADSdk.SocketIOClient) -> JRADSdk.SocketIOClient?
+  @objc func socket(forNamespace nsp: Swift.String) -> JRADSdk.SocketIOClient
+}
+public protocol SocketEnginePollable : JRADSdk.SocketEngineSpec {
+  var invalidated: Swift.Bool { get }
+  var postWait: [JRADSdk.Post] { get set }
+  var session: Foundation.URLSession? { get }
+  var waitingForPoll: Swift.Bool { get set }
+  var waitingForPost: Swift.Bool { get set }
+  func doPoll()
+  func sendPollMessage(_ message: Swift.String, withType type: JRADSdk.SocketEnginePacketType, withData datas: [Foundation.Data], completion: (() -> ())?)
+  func stopPolling()
+}
+extension SocketEnginePollable {
+  public func doPoll()
+  public func sendPollMessage(_ message: Swift.String, withType type: JRADSdk.SocketEnginePacketType, withData datas: [Foundation.Data], completion: (() -> ())? = nil)
+  public func stopPolling()
+}
+@objc open class SocketIOClient : ObjectiveC.NSObject, JRADSdk.SocketIOClientSpec {
+  @objc final public let nsp: Swift.String
+  @objc public var sid: Swift.String {
+    @objc get
+  }
+  public var anyHandler: ((JRADSdk.SocketAnyEvent) -> ())? {
+    get
+  }
+  public var handlers: [JRADSdk.SocketEventHandler] {
+    get
+  }
+  @objc weak public var manager: JRADSdk.SocketManagerSpec? {
+    get
+  }
+  @objc public var rawEmitView: JRADSdk.SocketRawView {
+    @objc get
+  }
+  @objc public var status: JRADSdk.SocketIOStatus {
+    @objc get
+  }
+  @objc public init(manager: JRADSdk.SocketManagerSpec, nsp: Swift.String)
+  @objc deinit
+  @objc open func connect()
+  @objc open func connect(timeoutAfter: Swift.Double, withHandler handler: (() -> ())?)
+  open func didConnect(toNamespace namespace: Swift.String)
+  open func didDisconnect(reason: Swift.String)
+  @objc open func disconnect()
+  open func emit(_ event: Swift.String, _ items: JRADSdk.SocketData..., completion: (() -> ())? = nil)
+  @objc open func emit(_ event: Swift.String, with items: [Any])
+  @objc open func emit(_ event: Swift.String, with items: [Any], completion: (() -> ())? = nil)
+  open func emitWithAck(_ event: Swift.String, _ items: JRADSdk.SocketData...) -> JRADSdk.OnAckCallback
+  @objc open func emitWithAck(_ event: Swift.String, with items: [Any]) -> JRADSdk.OnAckCallback
+  open func emitAck(_ ack: Swift.Int, with items: [Any])
+  @objc open func handleAck(_ ack: Swift.Int, data: [Any])
+  open func handleClientEvent(_ event: JRADSdk.SocketClientEvent, data: [Any])
+  @objc open func handleEvent(_ event: Swift.String, data: [Any], isInternalMessage: Swift.Bool, withAck ack: Swift.Int = -1)
+  open func handlePacket(_ packet: JRADSdk.SocketPacket)
+  @objc open func leaveNamespace()
+  @objc open func joinNamespace()
+  open func off(clientEvent event: JRADSdk.SocketClientEvent)
+  @objc open func off(_ event: Swift.String)
+  @objc open func off(id: Foundation.UUID)
+  @discardableResult
+  @objc open func on(_ event: Swift.String, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  @discardableResult
+  open func on(clientEvent event: JRADSdk.SocketClientEvent, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  @discardableResult
+  open func once(clientEvent event: JRADSdk.SocketClientEvent, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  @discardableResult
+  @objc open func once(_ event: Swift.String, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  @objc open func onAny(_ handler: @escaping (JRADSdk.SocketAnyEvent) -> ())
+  @available(*, unavailable, message: "Call the manager's reconnect method")
+  @objc open func reconnect()
+  @objc open func removeAllHandlers()
+  @objc open func setReconnecting(reason: Swift.String)
+  @objc override dynamic public init()
+}
+public protocol SocketParsable : AnyObject {
+  func parseBinaryData(_ data: Foundation.Data) -> JRADSdk.SocketPacket?
+  func parseSocketMessage(_ message: Swift.String) -> JRADSdk.SocketPacket?
+}
+public enum SocketParsableError : Swift.Error {
+  case invalidDataArray
+  case invalidPacket
+  case invalidPacketType
+  public static func == (a: JRADSdk.SocketParsableError, b: JRADSdk.SocketParsableError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol SocketDataBufferable : AnyObject {
+  var waitingPackets: [JRADSdk.SocketPacket] { get set }
+}
+extension SocketParsable where Self : JRADSdk.SocketDataBufferable, Self : JRADSdk.SocketManagerSpec {
+  public func parseSocketMessage(_ message: Swift.String) -> JRADSdk.SocketPacket?
+  public func parseBinaryData(_ data: Foundation.Data) -> JRADSdk.SocketPacket?
+}
+public protocol SocketIOClientSpec : AnyObject {
+  var anyHandler: ((JRADSdk.SocketAnyEvent) -> ())? { get }
+  var handlers: [JRADSdk.SocketEventHandler] { get }
+  var manager: JRADSdk.SocketManagerSpec? { get }
+  var nsp: Swift.String { get }
+  var rawEmitView: JRADSdk.SocketRawView { get }
+  var status: JRADSdk.SocketIOStatus { get }
+  func connect()
+  func connect(timeoutAfter: Swift.Double, withHandler handler: (() -> ())?)
+  func didConnect(toNamespace namespace: Swift.String)
+  func didDisconnect(reason: Swift.String)
+  func didError(reason: Swift.String)
+  func disconnect()
+  func emit(_ event: Swift.String, _ items: JRADSdk.SocketData..., completion: (() -> ())?)
+  func emitAck(_ ack: Swift.Int, with items: [Any])
+  func emitWithAck(_ event: Swift.String, _ items: JRADSdk.SocketData...) -> JRADSdk.OnAckCallback
+  func handleAck(_ ack: Swift.Int, data: [Any])
+  func handleClientEvent(_ event: JRADSdk.SocketClientEvent, data: [Any])
+  func handleEvent(_ event: Swift.String, data: [Any], isInternalMessage: Swift.Bool, withAck ack: Swift.Int)
+  func handlePacket(_ packet: JRADSdk.SocketPacket)
+  func leaveNamespace()
+  func joinNamespace()
+  func off(clientEvent event: JRADSdk.SocketClientEvent)
+  func off(_ event: Swift.String)
+  func off(id: Foundation.UUID)
+  func on(_ event: Swift.String, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  func on(clientEvent event: JRADSdk.SocketClientEvent, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  func once(clientEvent event: JRADSdk.SocketClientEvent, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  func once(_ event: Swift.String, callback: @escaping JRADSdk.NormalCallback) -> Foundation.UUID
+  func onAny(_ handler: @escaping (JRADSdk.SocketAnyEvent) -> ())
+  func removeAllHandlers()
+  func setReconnecting(reason: Swift.String)
+}
+extension SocketIOClientSpec {
+  public func didError(reason: Swift.String)
+}
+public enum SocketClientEvent : Swift.String {
+  case connect
+  case disconnect
+  case error
+  case ping
+  case pong
+  case reconnect
+  case reconnectAttempt
+  case statusChange
+  case websocketUpgrade
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+}
+public let WebsocketDidConnectNotification: Swift.String
+public let WebsocketDidDisconnectNotification: Swift.String
+public let WebsocketDisconnectionErrorKeyName: Swift.String
+public enum CloseCode : Swift.UInt16 {
+  case normal
+  case goingAway
+  case protocolError
+  case protocolUnhandledType
+  case noStatusReceived
+  case encoding
+  case policyViolated
+  case messageTooBig
+  public typealias RawValue = Swift.UInt16
+  public init?(rawValue: Swift.UInt16)
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public enum ErrorType : Swift.Error {
+  case outputStreamWriteError
+  case compressionError
+  case invalidSSLError
+  case writeTimeoutError
+  case protocolError
+  case upgradeError
+  case closeError
+  public static func == (a: JRADSdk.ErrorType, b: JRADSdk.ErrorType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct WSError : Swift.Error {
+  public let type: JRADSdk.ErrorType
+  public let message: Swift.String
+  public let code: Swift.Int
+}
+public protocol WebSocketClient : AnyObject {
+  var delegate: JRADSdk.WebSocketDelegate? { get set }
+  var pongDelegate: JRADSdk.WebSocketPongDelegate? { get set }
+  var disableSSLCertValidation: Swift.Bool { get set }
+  var overrideTrustHostname: Swift.Bool { get set }
+  var desiredTrustHostname: Swift.String? { get set }
+  var sslClientCertificate: JRADSdk.SSLClientCertificate? { get set }
+  var security: JRADSdk.SSLTrustValidator? { get set }
+  var enabledSSLCipherSuites: [Security.SSLCipherSuite]? { get set }
+  var isConnected: Swift.Bool { get }
+  func connect()
+  func disconnect(forceTimeout: Foundation.TimeInterval?, closeCode: Swift.UInt16)
+  func write(string: Swift.String, completion: (() -> ())?)
+  func write(data: Foundation.Data, completion: (() -> ())?)
+  func write(ping: Foundation.Data, completion: (() -> ())?)
+  func write(pong: Foundation.Data, completion: (() -> ())?)
+}
+extension WebSocketClient {
+  public func write(string: Swift.String)
+  public func write(data: Foundation.Data)
+  public func write(ping: Foundation.Data)
+  public func write(pong: Foundation.Data)
+  public func disconnect()
+}
+public struct SSLSettings {
+  public let useSSL: Swift.Bool
+  public let disableCertValidation: Swift.Bool
+  public var overrideTrustHostname: Swift.Bool
+  public var desiredTrustHostname: Swift.String?
+  public let sslClientCertificate: JRADSdk.SSLClientCertificate?
+  public let cipherSuites: [Security.SSLCipherSuite]?
+}
+public protocol WSStreamDelegate : AnyObject {
+  func newBytesInStream()
+  func streamDidError(error: Swift.Error?)
+}
+public protocol WSStream {
+  var delegate: JRADSdk.WSStreamDelegate? { get set }
+  func connect(url: Foundation.URL, port: Swift.Int, timeout: Foundation.TimeInterval, ssl: JRADSdk.SSLSettings, completion: @escaping ((Swift.Error?) -> Swift.Void))
+  func write(data: Foundation.Data) -> Swift.Int
+  func read() -> Foundation.Data?
+  func cleanup()
+  func sslTrust() -> (trust: Security.SecTrust?, domain: Swift.String?)
+}
+@objc @_inheritsConvenienceInitializers open class FoundationStream : ObjectiveC.NSObject, JRADSdk.WSStream, Foundation.StreamDelegate {
+  weak public var delegate: JRADSdk.WSStreamDelegate?
+  public var enableSOCKSProxy: Swift.Bool
+  public func connect(url: Foundation.URL, port: Swift.Int, timeout: Foundation.TimeInterval, ssl: JRADSdk.SSLSettings, completion: @escaping ((Swift.Error?) -> Swift.Void))
+  public func write(data: Foundation.Data) -> Swift.Int
+  public func read() -> Foundation.Data?
+  public func cleanup()
+  public func sslTrust() -> (trust: Security.SecTrust?, domain: Swift.String?)
+  @objc open func stream(_ aStream: Foundation.Stream, handle eventCode: Foundation.Stream.Event)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol WebSocketDelegate : AnyObject {
+  func websocketDidConnect(socket: JRADSdk.WebSocketClient)
+  func websocketDidDisconnect(socket: JRADSdk.WebSocketClient, error: Swift.Error?)
+  func websocketDidReceiveMessage(socket: JRADSdk.WebSocketClient, text: Swift.String)
+  func websocketDidReceiveData(socket: JRADSdk.WebSocketClient, data: Foundation.Data)
+}
+public protocol WebSocketPongDelegate : AnyObject {
+  func websocketDidReceivePong(socket: JRADSdk.WebSocketClient, data: Foundation.Data?)
+}
+public protocol WebSocketAdvancedDelegate : AnyObject {
+  func websocketDidConnect(socket: JRADSdk.WebSocket)
+  func websocketDidDisconnect(socket: JRADSdk.WebSocket, error: Swift.Error?)
+  func websocketDidReceiveMessage(socket: JRADSdk.WebSocket, text: Swift.String, response: JRADSdk.WebSocket.WSResponse)
+  func websocketDidReceiveData(socket: JRADSdk.WebSocket, data: Foundation.Data, response: JRADSdk.WebSocket.WSResponse)
+  func websocketHttpUpgrade(socket: JRADSdk.WebSocket, request: Swift.String)
+  func websocketHttpUpgrade(socket: JRADSdk.WebSocket, response: Swift.String)
+}
+@objc open class WebSocket : ObjectiveC.NSObject, Foundation.StreamDelegate, JRADSdk.WebSocketClient, JRADSdk.WSStreamDelegate {
+  public enum OpCode : Swift.UInt8 {
+    case continueFrame
+    case textFrame
+    case binaryFrame
+    case connectionClose
+    case ping
+    case pong
+    public typealias RawValue = Swift.UInt8
+    public init?(rawValue: Swift.UInt8)
+    public var rawValue: Swift.UInt8 {
+      get
+    }
+  }
+  public static let ErrorDomain: Swift.String
+  public var callbackQueue: Dispatch.DispatchQueue
+  @_hasMissingDesignatedInitializers public class WSResponse {
+    public var code: JRADSdk.WebSocket.OpCode
+    public var frameCount: Swift.Int
+    public var buffer: Foundation.NSMutableData?
+    final public let firstFrame: Foundation.Date
+    @objc deinit
+  }
+  weak public var delegate: JRADSdk.WebSocketDelegate?
+  weak public var advancedDelegate: JRADSdk.WebSocketAdvancedDelegate?
+  weak public var pongDelegate: JRADSdk.WebSocketPongDelegate?
+  public var onConnect: (() -> Swift.Void)?
+  public var onDisconnect: ((Swift.Error?) -> Swift.Void)?
+  public var onText: ((Swift.String) -> Swift.Void)?
+  public var onData: ((Foundation.Data) -> Swift.Void)?
+  public var onPong: ((Foundation.Data?) -> Swift.Void)?
+  public var onHttpResponseHeaders: (([Swift.String : Swift.String]) -> Swift.Void)?
+  public var disableSSLCertValidation: Swift.Bool
+  public var overrideTrustHostname: Swift.Bool
+  public var desiredTrustHostname: Swift.String?
+  public var sslClientCertificate: JRADSdk.SSLClientCertificate?
+  public var enableCompression: Swift.Bool
+  public var security: JRADSdk.SSLTrustValidator?
+  public var enabledSSLCipherSuites: [Security.SSLCipherSuite]?
+  public var isConnected: Swift.Bool {
+    get
+  }
+  public var request: Foundation.URLRequest
+  public var currentURL: Foundation.URL {
+    get
+  }
+  public var respondToPingWithPong: Swift.Bool
+  public init(request: Foundation.URLRequest, protocols: [Swift.String]? = nil, stream: JRADSdk.WSStream = FoundationStream())
+  convenience public init(url: Foundation.URL, protocols: [Swift.String]? = nil)
+  convenience public init(url: Foundation.URL, writeQueueQOS: Foundation.QualityOfService, protocols: [Swift.String]? = nil)
+  open func connect()
+  open func disconnect(forceTimeout: Foundation.TimeInterval? = nil, closeCode: Swift.UInt16 = CloseCode.normal.rawValue)
+  open func write(string: Swift.String, completion: (() -> ())? = nil)
+  open func write(data: Foundation.Data, completion: (() -> ())? = nil)
+  open func write(ping: Foundation.Data, completion: (() -> ())? = nil)
+  open func write(pong: Foundation.Data, completion: (() -> ())? = nil)
+  public func newBytesInStream()
+  public func streamDidError(error: Swift.Error?)
+  @objc deinit
+  @objc override dynamic public init()
+}
+public protocol SocketEngineWebsocket : JRADSdk.SocketEngineSpec {
+  func sendWebSocketMessage(_ str: Swift.String, withType type: JRADSdk.SocketEnginePacketType, withData datas: [Foundation.Data], completion: (() -> ())?)
+}
+extension SocketEngineWebsocket {
+  public func sendWebSocketMessage(_ str: Swift.String, withType type: JRADSdk.SocketEnginePacketType, withData data: [Foundation.Data], completion: (() -> ())?)
+}
+public enum SocketAckStatus : Swift.String {
+  case noAck
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public protocol SocketEngineSpec {
+  @objc var client: JRADSdk.SocketEngineClient? { get set }
+  @objc var closed: Swift.Bool { get }
+  @objc var compress: Swift.Bool { get }
+  @objc var connected: Swift.Bool { get }
+  @objc var connectParams: [Swift.String : Any]? { get set }
+  @objc var cookies: [Foundation.HTTPCookie]? { get }
+  @objc var engineQueue: Dispatch.DispatchQueue { get }
+  @objc var extraHeaders: [Swift.String : Swift.String]? { get set }
+  @objc var fastUpgrade: Swift.Bool { get }
+  @objc var forcePolling: Swift.Bool { get }
+  @objc var forceWebsockets: Swift.Bool { get }
+  @objc var polling: Swift.Bool { get }
+  @objc var probing: Swift.Bool { get }
+  @objc var sid: Swift.String { get }
+  @objc var socketPath: Swift.String { get }
+  @objc var urlPolling: Foundation.URL { get }
+  @objc var urlWebSocket: Foundation.URL { get }
+  @objc @available(*, deprecated, message: "No longer needed, if we're not polling, then we must be doing websockets")
+  var websocket: Swift.Bool { get }
+  @objc var ws: JRADSdk.WebSocket? { get }
+  @objc init(client: JRADSdk.SocketEngineClient, url: Foundation.URL, options: [Swift.String : Any]?)
+  @objc func connect()
+  @objc func didError(reason: Swift.String)
+  @objc func disconnect(reason: Swift.String)
+  @objc func doFastUpgrade()
+  @objc func flushWaitingForPostToWebSocket()
+  @objc func parseEngineData(_ data: Foundation.Data)
+  @objc func parseEngineMessage(_ message: Swift.String)
+  @objc func write(_ msg: Swift.String, withType type: JRADSdk.SocketEnginePacketType, withData data: [Foundation.Data], completion: (() -> ())?)
+}
+@objc(AIDConversion) @objcMembers public class Conversion : ObjectiveC.NSObject {
+  @objc final public let identifier: Swift.String
+  @objc public var name: Swift.String?
+  @objc public var totalQuantity: Swift.Int
+  @objc public var totalPrice: Swift.Double
+  @objc public var couponCodes: [Swift.String]
+  @objc public var items: [JRADSdk.ConversionItem]
+  @objc @available(*, deprecated, renamed: "identifier")
+  public var conversionId: Swift.String {
+    @objc get
+  }
+  @objc @available(*, deprecated, renamed: "name")
+  public var conversionName: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, renamed: "numberOfItems")
+  public var totalItems: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public init(identifier: Swift.String)
+  @objc public var dictionary: [Swift.String : Any] {
+    @objc get
+  }
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension Conversion : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public protocol SSLTrustValidator {
+  func isValid(_ trust: Security.SecTrust, domain: Swift.String?) -> Swift.Bool
+}
+open class SSLCert {
+  public init(data: Foundation.Data)
+  public init(key: Security.SecKey)
+  @objc deinit
+}
+open class StarscreamSSLSecurity : JRADSdk.SSLTrustValidator {
+  public var validatedDN: Swift.Bool
+  public var validateEntireChain: Swift.Bool
+  convenience public init(usePublicKeys: Swift.Bool = false)
+  public init(certs: [JRADSdk.SSLCert], usePublicKeys: Swift.Bool)
+  open func isValid(_ trust: Security.SecTrust, domain: Swift.String?) -> Swift.Bool
+  public func extractPublicKey(_ data: Foundation.Data) -> Security.SecKey?
+  public func extractPublicKey(_ cert: Security.SecCertificate, policy: Security.SecPolicy) -> Security.SecKey?
+  public func certificateChain(_ trust: Security.SecTrust) -> [Foundation.Data]
+  public func publicKeyChain(_ trust: Security.SecTrust) -> [Security.SecKey]
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers final public class SocketAnyEvent : ObjectiveC.NSObject {
+  @objc final public let event: Swift.String
+  @objc final public let items: [Any]?
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum SocketEnginePacketType : Swift.Int {
+  case open
+  case close
+  case ping
+  case pong
+  case message
+  case upgrade
+  case noop
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+}
+public struct SocketPacket : Swift.CustomStringConvertible {
+  public let nsp: Swift.String
+  public let id: Swift.Int
+  public let type: JRADSdk.SocketPacket.PacketType
+  public var binary: [Foundation.Data] {
+    get
+  }
+  public var data: [Any] {
+    get
+  }
+  public var args: [Any] {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public var event: Swift.String {
+    get
+  }
+  public var packetString: Swift.String {
+    get
+  }
+}
+extension SocketPacket {
+  public enum PacketType : Swift.Int {
+    case connect
+    case disconnect
+    case event
+    case ack
+    case error
+    case binaryEvent
+    case binaryAck
+    public var isBinary: Swift.Bool {
+      get
+    }
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol SocketData {
+  func socketRepresentation() throws -> JRADSdk.SocketData
+}
+extension SocketData {
+  public func socketRepresentation() -> JRADSdk.SocketData
+}
+extension Array : JRADSdk.SocketData {
+}
+extension Bool : JRADSdk.SocketData {
+}
+extension Dictionary : JRADSdk.SocketData {
+}
+extension Double : JRADSdk.SocketData {
+}
+extension Int : JRADSdk.SocketData {
+}
+extension NSArray : JRADSdk.SocketData {
+}
+extension Data : JRADSdk.SocketData {
+}
+extension NSData : JRADSdk.SocketData {
+}
+extension NSDictionary : JRADSdk.SocketData {
+}
+extension NSString : JRADSdk.SocketData {
+}
+extension NSNull : JRADSdk.SocketData {
+}
+extension String : JRADSdk.SocketData {
+}
+public typealias AckCallback = ([Any]) -> ()
+public typealias NormalCallback = ([Any], JRADSdk.SocketAckEmitter) -> ()
+public typealias Post = (msg: Swift.String, completion: (() -> ())?)
+public struct SSLClientCertificateError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String?
+}
+public class SSLClientCertificate {
+  convenience public init(pkcs12Path: Swift.String, password: Swift.String) throws
+  public init(identity: Security.SecIdentity, identityCertificate: Security.SecCertificate)
+  convenience public init(pkcs12Url: Foundation.URL, password: Swift.String) throws
+  public init(pkcs12Url: Foundation.URL, importOptions: CoreFoundation.CFDictionary) throws
+  @objc deinit
+}
+public struct SocketEventHandler {
+  public let event: Swift.String
+  public let id: Foundation.UUID
+  public let callback: JRADSdk.NormalCallback
+  public func executeCallback(with items: [Any], withAck ack: Swift.Int, withSocket socket: JRADSdk.SocketIOClient)
+}
+public enum SocketIOClientOption {
+  case compress
+  case connectParams([Swift.String : Any])
+  case cookies([Foundation.HTTPCookie])
+  case extraHeaders([Swift.String : Swift.String])
+  case forceNew(Swift.Bool)
+  case forcePolling(Swift.Bool)
+  case forceWebsockets(Swift.Bool)
+  case enableSOCKSProxy(Swift.Bool)
+  case handleQueue(Dispatch.DispatchQueue)
+  case log(Swift.Bool)
+  case logger(JRADSdk.SocketLogger)
+  case path(Swift.String)
+  case reconnects(Swift.Bool)
+  case reconnectAttempts(Swift.Int)
+  case reconnectWait(Swift.Int)
+  case reconnectWaitMax(Swift.Int)
+  case randomizationFactor(Swift.Double)
+  case secure(Swift.Bool)
+  case security(JRADSdk.SocketIOSSLSecurity)
+  case selfSigned(Swift.Bool)
+  case sessionDelegate(Foundation.URLSessionDelegate)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (lhs: JRADSdk.SocketIOClientOption, rhs: JRADSdk.SocketIOClientOption) -> Swift.Bool
+}
+extension JRADSdk.SocketIOStatus : Swift.Equatable {}
+extension JRADSdk.SocketIOStatus : Swift.Hashable {}
+extension JRADSdk.SocketIOStatus : Swift.RawRepresentable {}
+extension JRADSdk.SocketParsableError : Swift.Equatable {}
+extension JRADSdk.SocketParsableError : Swift.Hashable {}
+extension JRADSdk.SocketClientEvent : Swift.Equatable {}
+extension JRADSdk.SocketClientEvent : Swift.Hashable {}
+extension JRADSdk.SocketClientEvent : Swift.RawRepresentable {}
+extension JRADSdk.CloseCode : Swift.Equatable {}
+extension JRADSdk.CloseCode : Swift.Hashable {}
+extension JRADSdk.CloseCode : Swift.RawRepresentable {}
+extension JRADSdk.ErrorType : Swift.Equatable {}
+extension JRADSdk.ErrorType : Swift.Hashable {}
+extension JRADSdk.WebSocket.OpCode : Swift.Equatable {}
+extension JRADSdk.WebSocket.OpCode : Swift.Hashable {}
+extension JRADSdk.WebSocket.OpCode : Swift.RawRepresentable {}
+extension JRADSdk.SocketAckStatus : Swift.Equatable {}
+extension JRADSdk.SocketAckStatus : Swift.Hashable {}
+extension JRADSdk.SocketAckStatus : Swift.RawRepresentable {}
+extension JRADSdk.SocketEnginePacketType : Swift.Equatable {}
+extension JRADSdk.SocketEnginePacketType : Swift.Hashable {}
+extension JRADSdk.SocketEnginePacketType : Swift.RawRepresentable {}
+extension JRADSdk.SocketPacket.PacketType : Swift.Equatable {}
+extension JRADSdk.SocketPacket.PacketType : Swift.Hashable {}
+extension JRADSdk.SocketPacket.PacketType : Swift.RawRepresentable {}
+extension JRADSdk.SocketIOClientOption : Swift.Equatable {}
+extension JRADSdk.SocketIOClientOption : Swift.CustomStringConvertible {}

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		i76b/0qE5oRfvcoktxpxJTagFZY=
+		mj55Ud6TLKYXM2LTH+lUIXW28cI=
 		</data>
 		<key>Headers/AIDPage.h</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm.swiftinterface</key>
 		<data>
-		xlZGcJGpW1HZcPrBJ2m0gtOMXmE=
+		96DpwBlfSwlJnQf4waxxJEeM2oY=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm.swiftmodule</key>
 		<data>
-		20SSy0vcdQ+KMLTA/iTP0K6+Y3A=
+		aMoinE0SqCzVagJmeX18LU1hK8Y=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		3RjsN7Q8oonMtHOrjQxs0OHiUNI=
+		Ha22asnTPhen6iOFTc6A9sifWoQ=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		QkclnQ5nq7cc69vyTIdGXycZhFY=
+		bq4dYpROMndJbyCXgXTe5xg5JUI=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -58,11 +58,11 @@
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		3RjsN7Q8oonMtHOrjQxs0OHiUNI=
+		Ha22asnTPhen6iOFTc6A9sifWoQ=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		QkclnQ5nq7cc69vyTIdGXycZhFY=
+		bq4dYpROMndJbyCXgXTe5xg5JUI=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
@@ -70,11 +70,11 @@
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/armv7-apple-ios.swiftinterface</key>
 		<data>
-		xlZGcJGpW1HZcPrBJ2m0gtOMXmE=
+		96DpwBlfSwlJnQf4waxxJEeM2oY=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		20SSy0vcdQ+KMLTA/iTP0K6+Y3A=
+		aMoinE0SqCzVagJmeX18LU1hK8Y=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/armv7.swiftdoc</key>
 		<data>
@@ -82,11 +82,11 @@
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/armv7.swiftinterface</key>
 		<data>
-		xlZGcJGpW1HZcPrBJ2m0gtOMXmE=
+		96DpwBlfSwlJnQf4waxxJEeM2oY=
 		</data>
 		<key>Modules/JRADSdk.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		20SSy0vcdQ+KMLTA/iTP0K6+Y3A=
+		aMoinE0SqCzVagJmeX18LU1hK8Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -138,11 +138,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			i76b/0qE5oRfvcoktxpxJTagFZY=
+			mj55Ud6TLKYXM2LTH+lUIXW28cI=
 			</data>
 			<key>hash2</key>
 			<data>
-			vwvsBdBfFbninDEwpIaUglIRUS+iq5LKD7a8PeZpkA4=
+			UBfdUHsiDu1LWn5IVE0cQZNZ3wjMaQnC/fXSU6lGX20=
 			</data>
 		</dict>
 		<key>Headers/AIDPage.h</key>
@@ -204,22 +204,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xlZGcJGpW1HZcPrBJ2m0gtOMXmE=
+			96DpwBlfSwlJnQf4waxxJEeM2oY=
 			</data>
 			<key>hash2</key>
 			<data>
-			3CME/LZ/CE1IYeM8O3u7kOLSSn6a9HIB8Q+6HE99dZ0=
+			M947DXhoi54fe3AOdHLEhu9xqGwsKVUJpuDDXI+ksdI=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			20SSy0vcdQ+KMLTA/iTP0K6+Y3A=
+			aMoinE0SqCzVagJmeX18LU1hK8Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			MPOK5k5exMBoCCHq0XbO/zGJdxzK9+5RX3l48VK+ybQ=
+			e3NwQg2uCRN3gAA9XL/cCZ/dtboMIRpuQhED6HucrQU=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -237,22 +237,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3RjsN7Q8oonMtHOrjQxs0OHiUNI=
+			Ha22asnTPhen6iOFTc6A9sifWoQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			RxpipfTcL/PzWVUs/1Iofe2p9ukkimw0q94KFabwK+o=
+			MUxAWLI6XrgYrNBxUy1zLkg4ys7KZxA/sxHfNUMNZlE=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QkclnQ5nq7cc69vyTIdGXycZhFY=
+			bq4dYpROMndJbyCXgXTe5xg5JUI=
 			</data>
 			<key>hash2</key>
 			<data>
-			JbJxs21Wcg7VuPAhfH7sXru+Sjk1eyKz8ONN5Mxeq1o=
+			/f4m/i9Oh1lVZUKSIey/1BFqTLL5qYKhwABR/TUeVA4=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/arm64.swiftdoc</key>
@@ -270,22 +270,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3RjsN7Q8oonMtHOrjQxs0OHiUNI=
+			Ha22asnTPhen6iOFTc6A9sifWoQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			RxpipfTcL/PzWVUs/1Iofe2p9ukkimw0q94KFabwK+o=
+			MUxAWLI6XrgYrNBxUy1zLkg4ys7KZxA/sxHfNUMNZlE=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QkclnQ5nq7cc69vyTIdGXycZhFY=
+			bq4dYpROMndJbyCXgXTe5xg5JUI=
 			</data>
 			<key>hash2</key>
 			<data>
-			JbJxs21Wcg7VuPAhfH7sXru+Sjk1eyKz8ONN5Mxeq1o=
+			/f4m/i9Oh1lVZUKSIey/1BFqTLL5qYKhwABR/TUeVA4=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/armv7-apple-ios.swiftdoc</key>
@@ -303,22 +303,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xlZGcJGpW1HZcPrBJ2m0gtOMXmE=
+			96DpwBlfSwlJnQf4waxxJEeM2oY=
 			</data>
 			<key>hash2</key>
 			<data>
-			3CME/LZ/CE1IYeM8O3u7kOLSSn6a9HIB8Q+6HE99dZ0=
+			M947DXhoi54fe3AOdHLEhu9xqGwsKVUJpuDDXI+ksdI=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			20SSy0vcdQ+KMLTA/iTP0K6+Y3A=
+			aMoinE0SqCzVagJmeX18LU1hK8Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			MPOK5k5exMBoCCHq0XbO/zGJdxzK9+5RX3l48VK+ybQ=
+			e3NwQg2uCRN3gAA9XL/cCZ/dtboMIRpuQhED6HucrQU=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/armv7.swiftdoc</key>
@@ -336,22 +336,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xlZGcJGpW1HZcPrBJ2m0gtOMXmE=
+			96DpwBlfSwlJnQf4waxxJEeM2oY=
 			</data>
 			<key>hash2</key>
 			<data>
-			3CME/LZ/CE1IYeM8O3u7kOLSSn6a9HIB8Q+6HE99dZ0=
+			M947DXhoi54fe3AOdHLEhu9xqGwsKVUJpuDDXI+ksdI=
 			</data>
 		</dict>
 		<key>Modules/JRADSdk.swiftmodule/armv7.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			20SSy0vcdQ+KMLTA/iTP0K6+Y3A=
+			aMoinE0SqCzVagJmeX18LU1hK8Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			MPOK5k5exMBoCCHq0XbO/zGJdxzK9+5RX3l48VK+ybQ=
+			e3NwQg2uCRN3gAA9XL/cCZ/dtboMIRpuQhED6HucrQU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
